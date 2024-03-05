@@ -1,0 +1,196 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test Application",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/ascii-searcher": {
+            "get": {
+                "tags": [
+                    "ASCII Searcher"
+                ],
+                "summary": "Searches for the missing character between the ASCII character 44(,) and 124(|).",
+                "operationId": "a3380051500516e948fcaff39a9f8221",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/prime-numbers": {
+            "get": {
+                "tags": [
+                    "Prime numbers"
+                ],
+                "summary": "Gets all numbers and their divisors, if prime, the word `[PRIME]` appears",
+                "operationId": "7a9db8ef08cdf4ef84cf438ac16b57aa",
+                "parameters": [
+                    {
+                        "name": "initialValue",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "finalValue",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "10 [1, 2, 5, 10]"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/promotions/design/redirect/{promotionId}": {
+            "get": {
+                "tags": [
+                    "Promotion Design"
+                ],
+                "summary": "Get Redirect URL",
+                "description": "Returns a redirect URL based on the promotion ID",
+                "operationId": "getRedirectUrl",
+                "parameters": [
+                    {
+                        "name": "promotionId",
+                        "in": "path",
+                        "description": "ID of the promotion",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "redirect_url": {
+                                            "description": "The URL to which the user should be redirected",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Promotion Not Found"
+                    }
+                }
+            }
+        },
+        "/api/series/next-air-time": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Get next air time of a TV series",
+                "operationId": "4b27dc810ef03ef7de8e1c2ed134cfee",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "datetime",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-03-04 22:01:01"
+                                },
+                                {
+                                    "type": "string",
+                                    "format": "time",
+                                    "example": "22:01:01"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "tile": {
+                                                    "type": "string",
+                                                    "example": "Game of Thrones"
+                                                },
+                                                "week_day": {
+                                                    "type": "string",
+                                                    "example": "MONDAY"
+                                                },
+                                                "show_time": {
+                                                    "type": "string",
+                                                    "example": "21:00:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "There are no series for this date"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
