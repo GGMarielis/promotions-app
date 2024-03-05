@@ -1,5 +1,10 @@
 <?php
 
+use App\Actions\ASCIISearcherAction;
+use App\Actions\PrimeNumbersListAction;;
+
+use App\Http\Controllers\PromotionDesignController;
+use App\Http\Controllers\TVSeriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/prime-numbers', PrimeNumbersListAction::class);
