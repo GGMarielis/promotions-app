@@ -17,7 +17,7 @@ class PromotionDesignControllerTest extends TestCase
 
     public function testGivenANonExistentPromotionShouldThrowAnException()
     {
-        $this->expectException(ABTestException::class);
-        (new PromotionDesignController())->getRedirectUrl(123);
+        $response = $this->json('GET', '/api/promotions/design/redirect/123');
+        $this->assertEquals(422, $response->status());
     }
 }
