@@ -28,3 +28,5 @@ Route::get('/prime-numbers', PrimeNumbersListAction::class);
 Route::get('/ascii-searcher', ASCIISearcherAction::class);
 
 Route::get('/series/next-air-time', [TVSeriesController::class, 'nextAirTime']);
+
+Route::get('/promotions/design/redirect/{promotion_id}', [PromotionDesignController::class, 'getRedirectUrl']);
