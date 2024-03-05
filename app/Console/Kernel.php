@@ -11,6 +11,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         PrimeNumbersListAction::class,
+        ASCIISearcherAction::class,
     ];
 
     /**

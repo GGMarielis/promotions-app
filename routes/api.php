@@ -24,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/prime-numbers', PrimeNumbersListAction::class);
+
+Route::get('/ascii-searcher', ASCIISearcherAction::class);
