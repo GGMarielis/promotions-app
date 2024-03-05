@@ -16,6 +16,10 @@ Ensure you have the following prerequisites installed on your system:
     - php-curl
     - php-sqlite3
     - php-mysql
+    - php-dom
+    - php-xml
+    - php-intl
+    - php-mbstring
 
 **Note:** Ensure that Docker is added to the root group on your system.
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Promotions\PromotionDesignFactory;
+use Exads\ABTestException;
 use Illuminate\Http\JsonResponse;
+use Mockery\Exception;
 
 class PromotionDesignController extends Controller
 {
@@ -47,6 +49,11 @@ class PromotionDesignController extends Controller
     public function getRedirectUrl(int $promotionId): JsonResponse
     {
         $redirect = PromotionDesignFactory::create('percent');
-        return response()->json(['redirect_url' => $redirect->getRedirectUrl($promotionId)]);
+
+        try {
+            return response()->json(['redirect_url' => $redirect->getRedirectUrl($promotionId)]);
+        }catch (ABTestException $exception){
+            return response()->json(['error' => $exception->getMessage()], 422);
+        }
     }
 }

@@ -16,6 +16,7 @@ class TvSeriesSeeder extends Seeder
             ['title' => 'Game of Thrones', 'channel' => 'HBO', 'gender' => 'Fantasy'],
             ['title' => 'Stranger Things', 'channel' => 'Netflix', 'gender' => 'Horror'],
             ['title' => 'Breaking Bad', 'channel' => 'AMC', 'gender' => 'Drama'],
+            ['title' => 'House of The Dragon', 'channel' => 'HBO', 'gender' => 'Fantasy'],
         ]);
     }
 }
